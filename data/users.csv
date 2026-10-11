@@ -1,0 +1,2 @@
+name,email,salt,password_hash
+Demo User,demo@shopkart.local,shopkart_salt_demo_2024,993a3cb48fc61796bd05df5cd2b824e3fd3ffdffd7a1a7dc371ac4d737259dca

@@ -1,0 +1,98 @@
+{{include:header.html}}
+<main class="product-detail-page">
+    <div class="breadcrumb-bar">
+        <a href="/">Home</a> &gt; 
+        <a href="/products?cat={{product_category_slug}}">{{product_category}}</a> &gt; 
+        <a href="/products?cat={{product_category_slug}}&sub={{product_subcategory_slug}}">{{product_subcategory}}</a> &gt; 
+        <span>{{product_name}}</span>
+    </div>
+
+    <div class="detail-container">
+        <!-- Left Column: Visual & Action Buttons -->
+        <div class="detail-left-col">
+            <div class="detail-image-box {{product_img_class}}">
+                <div class="detail-image-icon">{{product_icon}}</div>
+                <div class="detail-brand-badge">{{product_brand}}</div>
+            </div>
+
+            <div class="action-buttons-row">
+                <form action="/cart/add" method="POST" class="action-btn-form">
+                    <input type="hidden" name="id" value="{{product_id}}">
+                    <button type="submit" class="btn btn-cart">
+                        <span class="btn-icon">&#128722;</span> ADD TO CART
+                    </button>
+                </form>
+
+                <form action="/wishlist/add" method="POST" class="action-btn-form">
+                    <input type="hidden" name="id" value="{{product_id}}">
+                    <button type="submit" class="btn btn-wishlist">
+                        <span class="btn-icon">&#9825;</span> WISHLIST
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Column: Details, Pricing, Specs -->
+        <div class="detail-right-col">
+            <h1 class="detail-title">{{product_name}}</h1>
+            
+            <div class="detail-ratings-row">
+                <div class="rating-badge-large">
+                    {{product_rating}} <span class="rating-star">&#9733;</span>
+                </div>
+                <span class="review-count-text">{{product_reviews}} Ratings &amp; {{product_review_approx}} Reviews</span>
+                <span class="assured-badge">&#10004; ShopKart Assured</span>
+            </div>
+
+            <div class="detail-pricing-box">
+                <div class="detail-special-price">Special Price</div>
+                <div class="price-main-row">
+                    <span class="detail-current-price">&#8377;{{product_price}}</span>
+                    <span class="detail-mrp">&#8377;{{product_mrp}}</span>
+                    <span class="detail-discount">{{product_discount_pct}}% off</span>
+                </div>
+                <div class="stock-status {{stock_status_class}}">&#9679; {{stock_status_text}}</div>
+            </div>
+
+            <!-- Offers Box -->
+            <div class="offers-section">
+                <h3>Available Offers</h3>
+                <ul class="offers-list">
+                    <li><span class="offer-tag">&#127991; Bank Offer:</span> 5% Cashback on ShopKart Axis Bank Credit Card</li>
+                    <li><span class="offer-tag">&#127991; Special Price:</span> Get extra 10% off on combo purchases</li>
+                    <li><span class="offer-tag">&#127991; Partner Offer:</span> Sign up for ShopKart Pay Later &amp; get &#8377;250 cashback</li>
+                </ul>
+            </div>
+
+            <!-- Highlights Section -->
+            <div class="specs-section">
+                <h3>Highlights</h3>
+                <ul class="highlights-list">
+                    {{product_highlights_html}}
+                </ul>
+            </div>
+
+            <!-- Specifications Table -->
+            <div class="specs-section">
+                <h3>Specifications</h3>
+                <table class="specs-table">
+                    <tbody>
+                        {{product_specs_html}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar Products Section -->
+    <section class="similar-products-section">
+        <div class="similar-header">
+            <h3>Similar Products in {{product_category}}</h3>
+            <a href="/products?cat={{product_category_slug}}" class="view-all-similar">View All</a>
+        </div>
+        <div class="product-scroll-container">
+            {{similar_products_html}}
+        </div>
+    </section>
+</main>
+{{include:footer.html}}

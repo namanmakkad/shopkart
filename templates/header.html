@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{page_title}}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="header-container">
+        <!-- Logo -->
+        <a href="/" class="logo" aria-label="ShopKart Home">
+            <span class="logo-text">&#128722; ShopKart</span>
+            <span class="logo-tagline">Explore <span class="logo-plus">Plus &#10022;</span></span>
+        </a>
+
+        <!-- Search Bar -->
+        <form class="search-bar" action="/search" method="GET" role="search">
+            <input type="text" name="q" placeholder="Search for products, brands and more" value="{{search_query}}" autocomplete="off" aria-label="Search">
+            <button type="submit" class="search-btn" aria-label="Submit Search">&#128269;</button>
+        </form>
+
+        <!-- User Menu (CSS-only dropdown) -->
+        <div class="header-action user-menu" tabindex="0">
+            <a href="/login" class="header-link">{{user_greeting}} &#9662;</a>
+            <div class="dropdown-menu user-dropdown">
+                <a href="/orders">&#128230; Orders</a>
+                <a href="/wishlist">&#10084; Wishlist</a>
+                <a href="/cart">&#128722; Cart</a>
+                <a href="/dsa">&#9889; DSA Engine</a>
+                <a href="/logout">&#10140; Logout</a>
+            </div>
+        </div>
+
+        <!-- Cart -->
+        <a href="/cart" class="header-action cart-link" aria-label="Shopping Cart">
+            <span class="cart-icon">&#128722;</span>
+            <span>Cart</span>
+            <span class="cart-badge">{{cart_count}}</span>
+        </a>
+    </div>
+
+    <!-- Category Navigation Bar with CSS Mega Dropdowns -->
+    <nav class="category-nav" aria-label="Categories">
+        <div class="category-nav-container">
+            <div class="nav-item" tabindex="0">
+                <a href="/products?cat=electronics">Electronics &#9662;</a>
+                <div class="mega-dropdown">
+                    <div class="mega-col">
+                        <h4>Audio</h4>
+                        <a href="/products?cat=electronics&sub=headphones">Headphones</a>
+                        <a href="/products?cat=electronics&sub=speakers">Speakers</a>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Cameras</h4>
+                        <a href="/products?cat=electronics&sub=cameras">DSLR Cameras</a>
+                        <a href="/products?cat=electronics&sub=accessories">Accessories</a>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Computer</h4>
+                        <a href="/products?cat=electronics&sub=laptops">Laptops</a>
+                        <a href="/products?cat=electronics&sub=tablets">Tablets</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item" tabindex="0">
+                <a href="/products?cat=mobiles">Mobiles &#9662;</a>
+                <div class="mega-dropdown">
+                    <div class="mega-col">
+                        <h4>Smartphones</h4>
+                        <a href="/products?cat=mobiles&sub=smartphones">All Smartphones</a>
+                        <a href="/products?cat=mobiles&sub=budget">Budget Phones</a>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Accessories</h4>
+                        <a href="/products?cat=mobiles&sub=cases">Cases &amp; Covers</a>
+                        <a href="/products?cat=mobiles&sub=chargers">Chargers</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item" tabindex="0">
+                <a href="/products?cat=fashion">Fashion &#9662;</a>
+                <div class="mega-dropdown">
+                    <div class="mega-col">
+                        <h4>Men</h4>
+                        <a href="/products?cat=fashion&sub=mens-shirts">Shirts</a>
+                        <a href="/products?cat=fashion&sub=mens-shoes">Shoes</a>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Women</h4>
+                        <a href="/products?cat=fashion&sub=womens-dresses">Dresses</a>
+                        <a href="/products?cat=fashion&sub=womens-shoes">Shoes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item" tabindex="0">
+                <a href="/products?cat=home">Home &#9662;</a>
+                <div class="mega-dropdown">
+                    <div class="mega-col">
+                        <h4>Living Room</h4>
+                        <a href="/products?cat=home&sub=sofas">Sofas</a>
+                        <a href="/products?cat=home&sub=tables">Tables</a>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Kitchen</h4>
+                        <a href="/products?cat=home&sub=cookware">Cookware</a>
+                        <a href="/products?cat=home&sub=storage">Storage</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item" tabindex="0">
+                <a href="/products?cat=appliances">Appliances &#9662;</a>
+                <div class="mega-dropdown">
+                    <div class="mega-col">
+                        <h4>Large</h4>
+                        <a href="/products?cat=appliances&sub=refrigerators">Refrigerators</a>
+                        <a href="/products?cat=appliances&sub=washing">Washing Machines</a>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Small</h4>
+                        <a href="/products?cat=appliances&sub=mixers">Mixer Grinders</a>
+                        <a href="/products?cat=appliances&sub=irons">Irons</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item" tabindex="0">
+                <a href="/products?cat=food">Food &#9662;</a>
+                <div class="mega-dropdown">
+                    <div class="mega-col">
+                        <h4>Snacks</h4>
+                        <a href="/products?cat=food&sub=chips">Chips &amp; Namkeen</a>
+                        <a href="/products?cat=food&sub=chocolates">Chocolates</a>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Beverages</h4>
+                        <a href="/products?cat=food&sub=tea">Tea &amp; Coffee</a>
+                        <a href="/products?cat=food&sub=juices">Juices</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item" tabindex="0">
+                <a href="/products?cat=beauty">Beauty &#9662;</a>
+                <div class="mega-dropdown">
+                    <div class="mega-col">
+                        <h4>Skincare</h4>
+                        <a href="/products?cat=beauty&sub=moisturizers">Moisturizers</a>
+                        <a href="/products?cat=beauty&sub=sunscreen">Sunscreen</a>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Haircare</h4>
+                        <a href="/products?cat=beauty&sub=shampoo">Shampoo</a>
+                        <a href="/products?cat=beauty&sub=conditioner">Conditioner</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <a href="/products?cat=toys">Toys</a>
+            </div>
+            <div class="nav-item">
+                <a href="/products?cat=sports">Sports</a>
+            </div>
+            <div class="nav-item">
+                <a href="/products?cat=books">Books</a>
+            </div>
+        </div>
+    </nav>
+</header>

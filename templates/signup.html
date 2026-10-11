@@ -1,0 +1,44 @@
+{{include:header.html}}
+<main class="auth-page">
+    <div class="auth-box-container">
+        <!-- Left Banner -->
+        <div class="auth-left-banner">
+            <h2>Looks like you're new here!</h2>
+            <p>Sign up with your email to get started with ShopKart</p>
+            <div class="auth-banner-art">&#127873;</div>
+        </div>
+
+        <!-- Right Form -->
+        <div class="auth-right-form">
+            {{auth_error_html}}
+
+            <form action="/signup" method="POST" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" name="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" name="email" required placeholder="Enter Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-pwd">Password</label>
+                    <input type="password" id="signup-pwd" name="password" required minlength="6" placeholder="Create Password (min 6 chars)">
+                </div>
+
+                <div class="form-terms">
+                    By continuing, you agree to ShopKart's <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>.
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Continue</button>
+            </form>
+
+            <div class="auth-switch-link">
+                Existing User? <a href="/login">Log in</a>
+            </div>
+        </div>
+    </div>
+</main>
+{{include:footer.html}}

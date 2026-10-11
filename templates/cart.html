@@ -1,0 +1,22 @@
+{{include:header.html}}
+<main class="cart-page">
+    <div class="cart-container">
+        {{undo_banner_html}}
+
+        <div class="cart-layout">
+            <!-- Left Column: Items List -->
+            <div class="cart-items-column">
+                <div class="cart-header-box">
+                    <h2>Shopping Cart ({{cart_item_count}} items)</h2>
+                    {{undo_button_html}}
+                </div>
+
+                {{cart_content_html}}
+            </div>
+
+            <!-- Right Column: Price Details Sidebar -->
+            {{cart_price_sidebar_html}}
+        </div>
+    </div>
+</main>
+{{include:footer.html}}

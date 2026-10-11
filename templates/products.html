@@ -1,0 +1,123 @@
+{{include:header.html}}
+<main class="products-page">
+    <div class="breadcrumb-bar">
+        <a href="/">Home</a> &gt; <span>{{breadcrumb_category}}</span>
+    </div>
+
+    <div class="catalog-layout">
+        <!-- Filter Sidebar -->
+        <aside class="catalog-sidebar">
+            <div class="sidebar-header">
+                <h3>Filters</h3>
+                <a href="/products?cat={{current_cat_param}}" class="clear-filters">Clear All</a>
+            </div>
+
+            <form action="/products" method="GET" class="filter-form">
+                <input type="hidden" name="cat" value="{{current_cat_param}}">
+                <input type="hidden" name="sub" value="{{current_sub_param}}">
+                <input type="hidden" name="q" value="{{current_q_param}}">
+                <input type="hidden" name="sort" value="{{current_sort_param}}">
+                <input type="hidden" name="algo" value="{{current_algo_param}}">
+
+                <!-- Price Filter -->
+                <div class="filter-group">
+                    <h4>PRICE RANGE (&#8377;)</h4>
+                    <div class="price-inputs">
+                        <input type="number" name="min_price" placeholder="Min" value="{{filter_min_price}}" min="0" step="100">
+                        <span>to</span>
+                        <input type="number" name="max_price" placeholder="Max" value="{{filter_max_price}}" min="0" step="100">
+                    </div>
+                </div>
+
+                <!-- Rating Filter -->
+                <div class="filter-group">
+                    <h4>CUSTOMER RATINGS</h4>
+                    <label class="filter-radio">
+                        <input type="radio" name="min_rating" value="4.0" {{rating_4_checked}}>
+                        <span>4&#9733; &amp; above</span>
+                    </label>
+                    <label class="filter-radio">
+                        <input type="radio" name="min_rating" value="3.5" {{rating_35_checked}}>
+                        <span>3.5&#9733; &amp; above</span>
+                    </label>
+                    <label class="filter-radio">
+                        <input type="radio" name="min_rating" value="3.0" {{rating_3_checked}}>
+                        <span>3.0&#9733; &amp; above</span>
+                    </label>
+                    <label class="filter-radio">
+                        <input type="radio" name="min_rating" value="" {{rating_all_checked}}>
+                        <span>All Ratings</span>
+                    </label>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="filter-group">
+                    <h4>BRAND</h4>
+                    <select name="brand" class="filter-select">
+                        <option value="">All Brands</option>
+                        {{brand_options_html}}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary filter-submit-btn">Apply Filters</button>
+            </form>
+        </aside>
+
+        <!-- Product Results Area -->
+        <section class="catalog-content">
+            <!-- Sort & Algorithm Toolbar -->
+            <div class="catalog-toolbar">
+                <div class="results-count">
+                    <strong>{{result_count}}</strong> items found for <span class="highlight-query">{{search_label}}</span>
+                </div>
+
+                <div class="sort-controls">
+                    <form action="/products" method="GET" class="sort-form">
+                        <input type="hidden" name="cat" value="{{current_cat_param}}">
+                        <input type="hidden" name="sub" value="{{current_sub_param}}">
+                        <input type="hidden" name="q" value="{{current_q_param}}">
+                        <input type="hidden" name="min_price" value="{{filter_min_price}}">
+                        <input type="hidden" name="max_price" value="{{filter_max_price}}">
+                        <input type="hidden" name="min_rating" value="{{filter_min_rating}}">
+                        <input type="hidden" name="brand" value="{{filter_brand}}">
+
+                        <div class="control-item">
+                            <label for="sort-select">Sort By:</label>
+                            <select id="sort-select" name="sort">
+                                <option value="relevance" {{sort_relevance_sel}}>Relevance</option>
+                                <option value="price_asc" {{sort_price_asc_sel}}>Price: Low to High</option>
+                                <option value="price_desc" {{sort_price_desc_sel}}>Price: High to Low</option>
+                                <option value="rating_desc" {{sort_rating_desc_sel}}>Rating: High to Low</option>
+                                <option value="discount_desc" {{sort_discount_desc_sel}}>Discount: High to Low</option>
+                            </select>
+                        </div>
+
+                        <div class="control-item">
+                            <label for="algo-select">DSA Engine:</label>
+                            <select id="algo-select" name="algo">
+                                <option value="merge" {{algo_merge_sel}}>Merge Sort (Stable, O(n log n))</option>
+                                <option value="quick" {{algo_quick_sel}}>Quick Sort (Randomized Pivot, O(n log n))</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-secondary toolbar-btn">Sort</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Algorithm Metrics Banner -->
+            <div class="algo-stats-banner">
+                <span class="algo-pill">&#9889; Engine: <strong>{{algo_display_name}}</strong></span>
+                <span class="algo-metric">Comparisons: <strong>{{algo_comparisons}}</strong></span>
+                <span class="algo-metric">Execution Time: <strong>{{algo_time_str}}</strong></span>
+                <span class="algo-metric">Filter Method: <strong>{{filter_method_info}}</strong></span>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div class="products-grid">
+                {{products_grid_html}}
+            </div>
+        </section>
+    </div>
+</main>
+{{include:footer.html}}

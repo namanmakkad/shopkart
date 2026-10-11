@@ -1,0 +1,111 @@
+{{include:header.html}}
+<main class="checkout-page">
+    <div class="breadcrumb-bar">
+        <a href="/">Home</a> &gt; <a href="/cart">Cart</a> &gt; <span>Checkout</span>
+    </div>
+
+    <div class="checkout-layout">
+        <!-- Left: Steps / Forms -->
+        <div class="checkout-left-column">
+            <!-- Step 1: Login Status -->
+            <div class="checkout-step-card step-completed">
+                <div class="step-header">
+                    <span class="step-num">&#10004;</span>
+                    <h3>1. LOGIN</h3>
+                </div>
+                <div class="step-body-inline">
+                    <span>Logged in as: <strong>{{checkout_user_name}}</strong> ({{checkout_user_email}})</span>
+                </div>
+            </div>
+
+            <!-- Step 2: Delivery Address Form -->
+            <form action="/checkout" method="POST" class="checkout-form">
+                <div class="checkout-step-card">
+                    <div class="step-header">
+                        <span class="step-num">2</span>
+                        <h3>DELIVERY ADDRESS</h3>
+                    </div>
+                    <div class="step-body">
+                        {{checkout_error_html}}
+
+                        <div class="form-row">
+                            <div class="form-group flex-1">
+                                <label for="addr-name">Full Name *</label>
+                                <input type="text" id="addr-name" name="name" value="{{checkout_user_name}}" required placeholder="Name">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label for="addr-phone">10-digit Mobile Number *</label>
+                                <input type="tel" id="addr-phone" name="phone" pattern="[0-9]{10}" required placeholder="10-digit mobile number">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group flex-1">
+                                <label for="addr-pincode">Pincode *</label>
+                                <input type="text" id="addr-pincode" name="pincode" pattern="[0-9]{6}" required placeholder="6-digit pincode">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label for="addr-city">City / District *</label>
+                                <input type="text" id="addr-city" name="city" required placeholder="City">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label for="addr-state">State *</label>
+                                <input type="text" id="addr-state" name="state" required placeholder="State">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addr-line">Street Address / House No / Area *</label>
+                            <textarea id="addr-line" name="address" rows="3" required placeholder="Address details"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Payment Options -->
+                <div class="checkout-step-card">
+                    <div class="step-header">
+                        <span class="step-num">3</span>
+                        <h3>PAYMENT OPTIONS</h3>
+                    </div>
+                    <div class="step-body">
+                        <label class="payment-option">
+                            <input type="radio" name="payment_method" value="COD" checked>
+                            <div class="payment-info">
+                                <strong>Cash on Delivery (COD)</strong>
+                                <span>Pay in cash or UPI when your order is delivered to your doorstep.</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment_method" value="UPI">
+                            <div class="payment-info">
+                                <strong>UPI Instant Payment (Demo)</strong>
+                                <span>Google Pay, PhonePe, Paytm, or BHIM.</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment_method" value="CARD">
+                            <div class="payment-info">
+                                <strong>Credit / Debit / ATM Card (Demo)</strong>
+                                <span>Visa, MasterCard, RuPay, Maestro.</span>
+                            </div>
+                        </label>
+
+                        <div class="checkout-submit-box">
+                            <button type="submit" class="btn btn-primary btn-large btn-confirm-order">
+                                CONFIRM &amp; PLACE ORDER
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Right: Order Summary Sidebar -->
+        <div class="checkout-right-column">
+            {{checkout_sidebar_html}}
+        </div>
+    </div>
+</main>
+{{include:footer.html}}

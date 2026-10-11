@@ -1,0 +1,12 @@
+# Binaries & Compiled Objects
+*.exe
+*.o
+obj/
+
+# Windows & OS Artifacts
+Thumbs.db
+.DS_Store
+
+# Editor Settings
+.vscode/
+.idea/

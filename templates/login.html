@@ -1,0 +1,61 @@
+{{include:header.html}}
+<main class="auth-page">
+    <div class="auth-box-container">
+        <!-- Left Banner -->
+        <div class="auth-left-banner">
+            <h2>Login</h2>
+            <p>Get access to your Orders, Wishlist and Recommendations</p>
+            <div class="auth-banner-art">&#128722;</div>
+        </div>
+
+        <!-- Right Form -->
+        <div class="auth-right-form">
+            {{auth_error_html}}
+
+            <form action="/login" method="POST" class="auth-form">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" name="email" value="{{login_email_value}}" required placeholder="Enter Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="login-pwd">Password</label>
+                    <input type="password" id="login-pwd" name="password" required placeholder="Enter Password">
+                </div>
+
+                <div class="form-terms">
+                    By continuing, you agree to ShopKart's <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>.
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+
+                <div class="auth-divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- One-click Demo Account Panel -->
+                <div class="demo-account-panel">
+                    <div class="demo-badge">Quick Evaluation</div>
+                    <p class="demo-desc">Instant access with pre-seeded demo credentials:</p>
+                    <div class="demo-creds">
+                        <code>demo@shopkart.local</code> / <code>Demo@12345</code>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Separate Demo Auto-Submit Form -->
+            <form action="/login" method="POST" class="demo-auto-form">
+                <input type="hidden" name="email" value="demo@shopkart.local">
+                <input type="hidden" name="password" value="Demo@12345">
+                <button type="submit" class="btn btn-secondary btn-block demo-btn">
+                    &#9889; Try Demo Account (One Click)
+                </button>
+            </form>
+
+            <div class="auth-switch-link">
+                New to ShopKart? <a href="/signup">Create an account</a>
+            </div>
+        </div>
+    </div>
+</main>
+{{include:footer.html}}

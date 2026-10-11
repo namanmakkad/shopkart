@@ -1,0 +1,18 @@
+{{include:header.html}}
+<main class="wishlist-page">
+    <div class="breadcrumb-bar">
+        <a href="/">Home</a> &gt; <span>My Wishlist</span>
+    </div>
+
+    <div class="wishlist-container">
+        <div class="wishlist-header">
+            <h2>My Wishlist ({{wishlist_count}} items)</h2>
+            <span class="wishlist-subtitle">Items stored in linked list in C</span>
+        </div>
+
+        <div class="wishlist-items-box">
+            {{wishlist_items_html}}
+        </div>
+    </div>
+</main>
+{{include:footer.html}}
